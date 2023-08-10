@@ -1,9 +1,11 @@
 const mongodb = require('mongodb');
-// Initilize mongo client to the connection MongoClient will allow us to connect and enable us to perform 
+const config = require('./config'); 
 // CRUD Create. Read. Update. Delete operations
-const MongoClient = mongodb.MongoClient;
-const connectionURL = 'mongodb://127.0.0.1:27017'; // local host db
-const databaseName = 'task-manager'; // dbName
+const MongoClient = mongodb.MongoClient; 
+const connectionURL = config.db.connectionURL;
+const databaseName = config.db.databaseName;
+
+
 
 async function connectToDB() {
     try {
