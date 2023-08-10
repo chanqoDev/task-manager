@@ -11,18 +11,46 @@ async function connectToDB() {
         // R.  READING DATA | QUERYING DOCUMENTS
         // let lastTask = await db.collection('tasks').findOne({ _id: new ObjectId('64d5058b6dfea63fd728f2bd') });
         
-        // U.  UPDATE Documents | $set: {} , $inc: 1  
-        db.collection('users').updateOne({
-            _id: new ObjectId('64d498d6487bf74d6a7cc9fc')
-        }, {
-            $inc: {
-                age: 100
-            }
-        }).then((result) => {
-            console.log(result);
+        // U.  UPDATE Documents | $set: {} , $inc: 1
+
+        // db.collection('users').updateOne({
+        //     _id: new ObjectId('64d498d6487bf74d6a7cc9fc')
+        // }, {
+        //     $inc: {
+        //         age: 100
+        //     }
+        // }).then((result) => {
+        //     console.log(result);
+        // }).catch((error) => {
+        //     console.log(error);
+        // });
+
+        
+
+
+
+
+        // U.  UPDATE DOCUMENTS & Fields 
+            // update Documents.udpateOne().udpateMany() || dpate Fields => $set: { } , $inc: 1
+
+        db.collection('tasks').updateMany(
+            { completed: false },
+            { $set: { completed: true } }
+        ).then((result) => {
+            console.log(result); 
         }).catch((error) => {
-            console.log(error);
-        }); 
+            console.log('Updating document error failed', error)
+        })
+
+
+
+
+
+
+
+
+
+
 
     } catch (error) {
         console.error('Unable to connect to database', error);
