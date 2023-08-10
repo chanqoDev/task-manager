@@ -1,24 +1,24 @@
-// CRUD Create. Read. Update. Delete
 const mongodb = require('mongodb');
-
-// we need a mongo client to initilize the connection   
-    // MongoClient will allow us to connect and enable us to perform crud operations
-        // define the connect url, db name
-
+// Initilize mongo client to the connection MongoClient will allow us to connect and enable us to perform 
+// CRUD Create. Read. Update. Delete operations
 const MongoClient = mongodb.MongoClient;
-const connectionURL = 'mongodb://127.0.0.1:27017';
-const databaseName = 'task-manager';
-
-// we are going to set up an {} option ex: useNewURLParser
-    // then a callback that will connect to the db it is asyncrhounous
+const connectionURL = 'mongodb://127.0.0.1:27017'; // local host db
+const databaseName = 'task-manager'; // dbName
 
 async function connectToDB() {
     try {
         const client = await MongoClient.connect(connectionURL, { useNewUrlParser: true });
-        console.log('Connected correctly!');
+        const db = client.db(databaseName); 
+        // insert a collection users
+        db.collection('users').insertOne({
+            // inserting fields
+            name: 'Christian', 
+            age: 30
+        }); 
+
+        // console.log('Connected correctly!');
     } catch (error) {
         console.error('Unable to connect to database', error);
     }
 }
-
-connectToDB();
+connectToDB(); 
