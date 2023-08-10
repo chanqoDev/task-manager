@@ -39,7 +39,6 @@ async function connectToDB() {
 
 
         // D. DELETE DOCUMENTS & FIELDS : deleteMany({}) || .deleteOne({})
-        
         // db.collection('users').deleteMany({
         //     age: 28
         // }).then((result) => {
@@ -48,7 +47,6 @@ async function connectToDB() {
         // { console.log('error:', error) });
 
         // Delete using .deleteOne() 
-    
         // delete one document from task using .deleteOne
         // db.collection('tasks').deleteOne({
         //     _id: new ObjectId('64d50ac949d739de7da6d6d0')
