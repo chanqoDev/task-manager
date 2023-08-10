@@ -39,6 +39,7 @@ async function connectToDB() {
 
 
         // D. DELETE DOCUMENTS & FIELDS : deleteMany({}) || .deleteOne({})
+        
         // db.collection('users').deleteMany({
         //     age: 28
         // }).then((result) => {
@@ -46,32 +47,14 @@ async function connectToDB() {
         // }).catch((error) =>
         // { console.log('error:', error) });
 
-
-
-        
-
-
+        // Delete using .deleteOne() 
+    
         // delete one document from task using .deleteOne
-        db.collection('tasks').deleteOne({
-            _id: new ObjectId('64d50ac949d739de7da6d6d0')
-        }).then(result => {
-            console.log(result)
-        }).catch(err => console.error(err)); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // db.collection('tasks').deleteOne({
+        //     _id: new ObjectId('64d50ac949d739de7da6d6d0')
+        // }).then(result => {
+        //     console.log(result)
+        // }).catch(err => console.error(err)); 
 
     } catch (error) {
         console.error('Unable to connect to database', error);
