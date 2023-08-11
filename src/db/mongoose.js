@@ -6,34 +6,37 @@ mongoose.connect(`${connectionURL}/task-manager-api`, {
     useNewUrlParser: true
 }); 
 
+
  // 1. Task model with description and completed fields
-// const Tasks = mongoose.model("Tasks", {
-//     description: {
-//         type: String,
-//     }, 
-//     completed: {
-//         type: Boolean
-//     }
-// })
-//  // 2. Create a new Instance of the Model
-// const task = new Tasks({
-//     description: "Reading a Book",
-//     completed: true
-// })
-//  // 3. Save the Model to the db
-// task.save().then(() => {
-//      console.log(task)
-//  }).catch((err) => {console.log('error:', err)})
- 
+const Tasks = mongoose.model("Tasks", {
+    description: {
+        type: String,
+        trim: true,
+        required: true
+        }, 
+    completed: {
+        type: Boolean,
+        default: false, 
+    }
+})
+ // 2. Create a new Instance of the Model
+const task = new Tasks({
+    description: " Robert Kiyosaki Book    ",
+    // completed: true
+})
+ // 3. Save the Model to the db
+task.save().then(() => {
+    console.log(task)
+}).catch((err) => {console.log('error:', err)})
 
 
 
 
+/**
 // user model 
-
 const User = mongoose.model('User', {
     name: { type: String, required: true, trim: true },
-     age: { type: Number, default: 0, 
+    age: { type: Number, default: 0, 
         validate(value) {
             if (value < 0) {
                 throw new Error('Age must be a positive number'); 
@@ -54,10 +57,10 @@ const User = mongoose.model('User', {
         trim: true,
         validate(value) {
             if ( value.toLowerCase().includes('password')) {
-                 throw new Error('Password cannot contain Password')
-             }  
+                throw new Error('Password cannot contain Password')
+            }  
         }
-   }, 
+    }, 
 }); 
 
 const me = new User(
@@ -66,10 +69,12 @@ const me = new User(
         email: ' franchesco@gmail.com',
         password: '  meowPasswerd  '
     }); 
-
-me.save().then(() => {
-    console.log(me);
-}).catch((error) => {
-    console.log("Error!", error);
-});
-
+    
+    me.save().then(() => {
+        console.log(me);
+    }).catch((error) => {
+        console.log("Error!", error);
+    });
+ */
+    
+    
